@@ -8,3 +8,5 @@
 > Commits you push to the connected branch sync back to Lovable and show up in
 > the editor, so keep the branch in a working state.
 <!-- LOVABLE:END -->
+
+- Keep the creator portfolio as a single scrollable homepage with anchor navigation, because the requested experience is an integrated one-page portfolio.
