@@ -1,0 +1,4 @@
+- [x] Save verified creator imagery as project assets.
+- [ ] Build the one-page editorial creator portfolio with verified copy and working links.
+- [x] Add route-specific metadata and design tokens.
+- [ ] Verify the rendered portfolio, navigation, responsive layout, and build status.
