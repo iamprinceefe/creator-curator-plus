@@ -1,13 +1,13 @@
 export const CATEGORIES = [
   {
-    slug: "illustration",
-    label: "Illustration & Artwork",
-    description: "Original drawings and hand-made visual ideas.",
+    slug: "content-storytelling",
+    label: "Content & Storytelling",
+    description: "Video, narrative and digital content — YouTube, TikTok and Instagram.",
   },
   {
-    slug: "reels",
-    label: "Reels & Mobile Videography",
-    description: "Short-form video — memories, moments and mobile-shot stories.",
+    slug: "arts-writings",
+    label: "Arts & Writings",
+    description: "Illustration and published writing.",
   },
 ] as const;
 

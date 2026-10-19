@@ -1,7 +1,14 @@
-import { ArrowUpRight, Play } from "lucide-react";
+import { ArrowUpRight, Play, Quote } from "lucide-react";
 
 import type { Project } from "@/data/projects";
 import { cn } from "@/lib/utils";
+
+const MEDIA_LABEL: Record<Project["mediaType"], string> = {
+  image: "Illustration",
+  tiktok: "Reel",
+  youtube: "Video",
+  text: "Reflection",
+};
 
 export function ProjectCard({
   project,
@@ -10,6 +17,8 @@ export function ProjectCard({
   project: Project;
   onOpen: (slug: string) => void;
 }) {
+  const hasPlayOverlay = project.mediaType === "tiktok" || project.mediaType === "youtube";
+
   return (
     <button
       type="button"
@@ -18,18 +27,30 @@ export function ProjectCard({
     >
       <div
         className={cn(
-          "relative overflow-hidden bg-muted",
-          project.mediaType === "tiktok" ? "aspect-[9/16]" : "aspect-[4/5]",
+          "relative overflow-hidden",
+          project.mediaType === "text" ? "bg-forest text-primary-foreground" : "bg-muted",
+          project.mediaType === "tiktok" && "aspect-[9/16]",
+          project.mediaType === "youtube" && "aspect-video",
+          (project.mediaType === "image" || project.mediaType === "text") && "aspect-[4/5]",
         )}
       >
-        <img
-          src={project.image}
-          alt={project.alt}
-          loading="lazy"
-          className="size-full object-cover transition-transform duration-500 group-hover:scale-[1.035]"
-        />
+        {project.mediaType === "text" ? (
+          <div className="flex size-full flex-col justify-between p-5">
+            <Quote aria-hidden="true" className="size-6 text-citron" />
+            <p className="line-clamp-6 text-sm leading-6 text-primary-foreground/85">
+              {project.description}
+            </p>
+          </div>
+        ) : (
+          <img
+            src={project.image}
+            alt={project.alt}
+            loading="lazy"
+            className="size-full object-cover transition-transform duration-500 group-hover:scale-[1.035]"
+          />
+        )}
 
-        {project.mediaType === "tiktok" && (
+        {hasPlayOverlay && (
           <>
             <div
               aria-hidden="true"
@@ -55,7 +76,7 @@ export function ProjectCard({
         <div className="min-w-0">
           <p className="font-display text-2xl leading-tight">{project.title}</p>
           <p className="mt-2 text-xs text-muted-foreground">
-            {project.mediaType === "tiktok" ? "Reel" : "Illustration"} ·{" "}
+            {MEDIA_LABEL[project.mediaType]} ·{" "}
             {project.location ?? new Date(project.publishedAt).getFullYear()}
           </p>
         </div>

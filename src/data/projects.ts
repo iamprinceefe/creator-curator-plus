@@ -6,18 +6,22 @@ import thumbBridalTransition from "@/assets/tiktok/bridal-transition.jpg";
 import thumbCulture from "@/assets/tiktok/culture.jpg";
 import thumbLove from "@/assets/tiktok/love.jpg";
 import thumbPovBirthday from "@/assets/tiktok/pov-birthday-dinner.jpg";
+import thumbAnointed from "@/assets/youtube/anointed.jpg";
+import thumbGodWhoFathers from "@/assets/youtube/god-who-fathers.jpg";
+import thumbWhoAmI from "@/assets/youtube/who-am-i.jpg";
 
 export type Project = {
   id: string;
   slug: string;
   title: string;
   description: string;
-  category: "illustration" | "reels";
-  mediaType: "image" | "tiktok";
-  image: string;
-  alt: string;
+  category: "content-storytelling" | "arts-writings";
+  mediaType: "image" | "tiktok" | "youtube" | "text";
+  image?: string;
+  alt?: string;
   tiktokUrl?: string;
-  sourcePlatform: "instagram" | "tiktok";
+  youtubeId?: string;
+  sourcePlatform: "instagram" | "tiktok" | "youtube";
   sourceUrl: string;
   featured: boolean;
   publishedAt: string;
@@ -25,13 +29,14 @@ export type Project = {
 };
 
 export const PROJECTS: Project[] = [
+  // --- Arts & Writings ---
   {
     id: "a-return-to-drawing",
     slug: "a-return-to-drawing",
     title: "A Return to Drawing",
     description:
       "I've been drawing since I was three. Somewhere along the way I stopped — then in 2024, I picked the pencil back up and haven't stopped since. These are pieces made between August and October: sketches that are less about being perfect, and more about being felt.",
-    category: "illustration",
+    category: "arts-writings",
     mediaType: "image",
     image: illustrationArtwork,
     alt: "A colorful hand-drawn illustrated page from Ella's daily sketch series.",
@@ -40,20 +45,87 @@ export const PROJECTS: Project[] = [
     featured: true,
     publishedAt: "2026-10-15",
   },
+
+  // --- Content & Storytelling: featured YouTube ---
+  {
+    id: "the-god-who-fathers",
+    slug: "the-god-who-fathers",
+    title: "The God Who Fathers",
+    description:
+      "A guest conversation on the Creatively Curious podcast by Saphar Co. — Ella talks candidly about her childhood, faith, and the relationships that shape who she's become.",
+    category: "content-storytelling",
+    mediaType: "youtube",
+    image: thumbGodWhoFathers,
+    alt: "Thumbnail for the podcast episode The God Who Fathers, featuring Ella Roli.",
+    youtubeId: "XWQbNoMCf6k",
+    sourcePlatform: "youtube",
+    sourceUrl: "https://www.youtube.com/watch?v=XWQbNoMCf6k",
+    featured: true,
+    publishedAt: "2026-02-19",
+  },
+  {
+    id: "anointed-short-film",
+    slug: "anointed",
+    title: "Anointed",
+    description:
+      "A Christian short film — a quiet, carefully shot piece built around Isaiah 61:1, made with Chisom Micheal and the Holy Spirit.",
+    category: "content-storytelling",
+    mediaType: "youtube",
+    image: thumbAnointed,
+    alt: "Title card for the short film Anointed, featuring Ella Roli.",
+    youtubeId: "dzuZp4q7pW8",
+    sourcePlatform: "youtube",
+    sourceUrl: "https://www.youtube.com/watch?v=dzuZp4q7pW8",
+    featured: true,
+    publishedAt: "2025-11-19",
+  },
+  {
+    id: "who-am-i",
+    slug: "who-am-i",
+    title: "Who Am I?",
+    description:
+      "Episode one of a personal video series on finding purpose and direction — part reflection, part visual essay, shot and edited by Ella.",
+    category: "content-storytelling",
+    mediaType: "youtube",
+    image: thumbWhoAmI,
+    alt: "Title card for the video Who Am I? How to Find Purpose and Direction in Life.",
+    youtubeId: "qeSO80FZfo8",
+    sourcePlatform: "youtube",
+    sourceUrl: "https://www.youtube.com/watch?v=qeSO80FZfo8",
+    featured: true,
+    publishedAt: "2025-09-05",
+  },
+
+  // --- Content & Storytelling: Instagram ---
+  {
+    id: "how-a-nike-ad-inspired-a-campaign",
+    slug: "how-a-nike-ad-inspired-a-campaign",
+    title: "Studying a Nike Ad",
+    description:
+      "“Creative inspiration doesn't have to start with a blank page.” A behind-the-scenes look at how a Nike ad's sound and storytelling structure shaped one of her own campaign concepts — without copying it.",
+    category: "content-storytelling",
+    mediaType: "text",
+    sourcePlatform: "instagram",
+    sourceUrl: "https://www.instagram.com/ellaroli_/reel/DekQc44xHfs/",
+    featured: true,
+    publishedAt: "2026-10-17",
+  },
+
+  // --- Content & Storytelling: TikTok ---
   {
     id: "culture",
     slug: "culture",
     title: "Culture",
     description:
       "A West African traditional ceremony, captured in full color and sound — her most-watched video, resonating with a wide community of viewers who saw their own culture reflected in it.",
-    category: "reels",
+    category: "content-storytelling",
     mediaType: "tiktok",
     image: thumbCulture,
     alt: "A still from Ella's TikTok video of a West African traditional ceremony.",
     tiktokUrl: "https://www.tiktok.com/@tmerolique/video/7348102848556715269",
     sourcePlatform: "tiktok",
     sourceUrl: "https://www.tiktok.com/@tmerolique/video/7348102848556715269",
-    featured: true,
+    featured: false,
     publishedAt: "2024-03-19",
     location: "Oakville, Canada",
   },
@@ -63,14 +135,14 @@ export const PROJECTS: Project[] = [
     title: "Bridal Transition",
     description:
       "A playful transition edit made for a bride's big day — mobile videography with a CapCut-powered creative flourish.",
-    category: "reels",
+    category: "content-storytelling",
     mediaType: "tiktok",
     image: thumbBridalTransition,
     alt: "A still from Ella's bridal transition TikTok video.",
     tiktokUrl: "https://www.tiktok.com/@tmerolique/video/7406331100345289990",
     sourcePlatform: "tiktok",
     sourceUrl: "https://www.tiktok.com/@tmerolique/video/7406331100345289990",
-    featured: true,
+    featured: false,
     publishedAt: "2024-08-23",
   },
   {
@@ -79,14 +151,14 @@ export const PROJECTS: Project[] = [
     title: "A Day Out",
     description:
       "An afternoon with friends at a board game café in downtown Toronto — the kind of everyday memory-making that defines her mobile videography style.",
-    category: "reels",
+    category: "content-storytelling",
     mediaType: "tiktok",
     image: thumbADayOut,
     alt: "A still from Ella's TikTok video of a day out in downtown Toronto.",
     tiktokUrl: "https://www.tiktok.com/@tmerolique/video/7383546973619522821",
     sourcePlatform: "tiktok",
     sourceUrl: "https://www.tiktok.com/@tmerolique/video/7383546973619522821",
-    featured: true,
+    featured: false,
     publishedAt: "2024-06-23",
     location: "Downtown Toronto",
   },
@@ -96,7 +168,7 @@ export const PROJECTS: Project[] = [
     title: "Bridal Team",
     description:
       "Behind-the-scenes moments from a bridal shower, celebrating a close circle of friends.",
-    category: "reels",
+    category: "content-storytelling",
     mediaType: "tiktok",
     image: thumbBridalTeam,
     alt: "A still from Ella's TikTok video of a bridal shower.",
@@ -112,7 +184,7 @@ export const PROJECTS: Project[] = [
     slug: "love",
     title: "Love",
     description: "A quiet, golden-hour moment from a backyard wedding.",
-    category: "reels",
+    category: "content-storytelling",
     mediaType: "tiktok",
     image: thumbLove,
     alt: "A still from Ella's TikTok video of a backyard wedding.",
@@ -128,7 +200,7 @@ export const PROJECTS: Project[] = [
     slug: "birthday-recap",
     title: "Birthday Recap",
     description: "A celebration dinner recap, complete with a champagne tower.",
-    category: "reels",
+    category: "content-storytelling",
     mediaType: "tiktok",
     image: thumbBirthdayRecap,
     alt: "A still from Ella's TikTok video of a birthday dinner celebration.",
@@ -144,7 +216,7 @@ export const PROJECTS: Project[] = [
     slug: "pov-birthday-dinner",
     title: "POV: Birthday Dinner",
     description: "A second birthday dinner recap — a different celebration, a different crew.",
-    category: "reels",
+    category: "content-storytelling",
     mediaType: "tiktok",
     image: thumbPovBirthday,
     alt: "A still from Ella's TikTok video of another birthday dinner celebration.",
@@ -159,4 +231,5 @@ export const PROJECTS: Project[] = [
 export const getProjectBySlug = (slug: string) => PROJECTS.find((project) => project.slug === slug);
 export const getProjectsByCategory = (category: Project["category"]) =>
   PROJECTS.filter((project) => project.category === category);
-export const getFeaturedProjects = () => PROJECTS.filter((project) => project.featured);
+export const getFeaturedYouTube = () =>
+  PROJECTS.filter((project) => project.mediaType === "youtube" && project.featured);

@@ -12,8 +12,10 @@ import { ProjectLightbox } from "@/components/portfolio/project-lightbox";
 import { SocialLinks } from "@/components/portfolio/social-links";
 import { ARTICLES } from "@/data/articles";
 import type { CategorySlug } from "@/data/categories";
-import { getProjectBySlug, PROJECTS } from "@/data/projects";
+import { getFeaturedYouTube, getProjectBySlug, PROJECTS } from "@/data/projects";
 import { SOCIAL_LINKS } from "@/data/social";
+
+const FEATURED_YOUTUBE = getFeaturedYouTube();
 
 export const Route = createFileRoute("/")({
   component: CreatorPortfolio,
@@ -50,10 +52,14 @@ function CreatorPortfolio() {
   const openProject = (slug: string) => navigate({ search: { project: slug } });
   const closeProject = () => navigate({ search: {} });
 
-  const visibleProjects = useMemo(
-    () => (category === "all" ? PROJECTS : PROJECTS.filter((p) => p.category === category)),
-    [category],
-  );
+  const visibleProjects = useMemo(() => {
+    const scoped = category === "all" ? PROJECTS : PROJECTS.filter((p) => p.category === category);
+    // Featured YouTube videos get their own prominent block above, so they're
+    // excluded here to avoid showing the same three videos twice.
+    return scoped.filter((p) => p.mediaType !== "youtube");
+  }, [category]);
+  const showYouTube = category === "all" || category === "content-storytelling";
+  const showWriting = category === "all" || category === "arts-writings";
   const activeProject = activeSlug ? getProjectBySlug(activeSlug) : undefined;
 
   return (
@@ -96,9 +102,6 @@ function CreatorPortfolio() {
               >
                 <a className="transition-colors hover:text-background" href="#work">
                   Selected work
-                </a>
-                <a className="transition-colors hover:text-background" href="#writing">
-                  Writing
                 </a>
                 <a className="transition-colors hover:text-background" href="#about">
                   About
@@ -145,13 +148,6 @@ function CreatorPortfolio() {
                   <a
                     onClick={closeMenu}
                     className="min-h-12 content-center border-b border-border/70 text-base"
-                    href="#writing"
-                  >
-                    Writing
-                  </a>
-                  <a
-                    onClick={closeMenu}
-                    className="min-h-12 content-center border-b border-border/70 text-base"
                     href="#about"
                   >
                     About
@@ -179,13 +175,10 @@ function CreatorPortfolio() {
               hair, paragraph/CTAs anchored to the bottom over her shoulders/shirt — her face
               in between stays uncovered. Desktop below is untouched. */}
           <div className="absolute inset-0 z-10 flex flex-col justify-between px-5 pb-8 pt-24 sm:hidden">
-            <div className="reveal-up max-w-[280px]">
-              <p className="mb-4 flex items-center gap-2 text-[11px] font-semibold uppercase tracking-[0.14em] text-background/80">
-                <span className="inline-block size-1.5 rounded-full bg-citron" /> Visual storyteller
-                · Illustrator
-              </p>
-              <h1 className="editorial-title text-[2.6rem] leading-[0.98] text-background">
-                Ideas, given <span className="italic text-citron">feeling.</span>
+            <div className="reveal-up max-w-[290px]">
+              <h1 className="editorial-title text-[1.9rem] leading-[1.08] text-background">
+                Creative Director, Content Strategist,{" "}
+                <span className="italic text-citron">Visual Storyteller</span>
               </h1>
             </div>
 
@@ -212,23 +205,20 @@ function CreatorPortfolio() {
                 </Button>
               </div>
               <p className="mt-5 text-[10px] font-medium uppercase tracking-[0.12em] text-background/70">
-                Independent creative · Hamilton, Canada
+                Hamilton, Canada
               </p>
             </div>
           </div>
 
           {/* Desktop/tablet composition (>= sm) — unchanged from before. */}
           <div className="relative z-10 mx-auto mt-auto hidden w-full max-w-[1440px] px-5 pb-14 pt-24 sm:block sm:px-10 sm:pb-20 lg:px-16 lg:pb-24">
-            <div className="reveal-up max-w-[620px]">
-              <p className="mb-6 flex items-center gap-3 text-xs font-semibold uppercase tracking-[0.14em] text-background/80">
-                <span className="inline-block size-2 rounded-full bg-citron" /> Visual storyteller ·
-                Illustrator · Creative director
-              </p>
+            <div className="reveal-up max-w-[680px]">
               <h1
                 id="intro-title"
-                className="editorial-title max-w-[590px] text-7xl leading-[0.98] text-background lg:text-[6.5rem]"
+                className="editorial-title text-5xl leading-[1.08] text-background sm:text-6xl lg:text-7xl"
               >
-                Ideas, given <span className="italic text-citron">feeling.</span>
+                Creative Director, Content Strategist,{" "}
+                <span className="italic text-citron">Visual Storyteller</span>
               </h1>
               <p className="mt-7 max-w-[470px] text-lg leading-8 text-background/85">
                 I’m Ella Roli — a storyteller and illustrator making thoughtful ideas visible
@@ -251,7 +241,7 @@ function CreatorPortfolio() {
                 </Button>
               </div>
               <p className="mt-9 text-xs font-medium uppercase tracking-[0.13em] text-background/70">
-                Independent creative · Hamilton, Canada
+                Hamilton, Canada
               </p>
             </div>
           </div>
@@ -289,23 +279,70 @@ function CreatorPortfolio() {
               </a>
             </div>
 
-            <div className="mb-10">
+            <div className="mb-12">
               <CategoryTabs active={category} onChange={setCategory} />
             </div>
 
-            {visibleProjects.length === 0 ? (
+            {showYouTube && (
+              <div className="mb-14 border-b border-border pb-14">
+                <p className="mb-6 text-xs font-semibold uppercase tracking-[0.14em] text-muted-foreground">
+                  Featured on YouTube
+                </p>
+                <div className="grid grid-cols-1 items-start gap-x-7 gap-y-10 sm:grid-cols-3">
+                  {FEATURED_YOUTUBE.map((item) => (
+                    <ProjectCard key={item.id} project={item} onOpen={openProject} />
+                  ))}
+                </div>
+                <a
+                  href={SOCIAL_LINKS.youtube.url}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="mt-8 inline-flex min-h-11 items-center gap-2 text-sm font-medium hover:text-primary"
+                >
+                  See more on my YouTube <ArrowUpRight aria-hidden="true" className="size-4" />
+                </a>
+              </div>
+            )}
+
+            {visibleProjects.length === 0 && !showWriting ? (
               <p className="py-16 text-center text-sm text-muted-foreground">
                 Nothing in this category yet — check back soon.
               </p>
             ) : (
-              <div className="grid grid-cols-1 items-start gap-x-7 gap-y-10 sm:grid-cols-2 lg:grid-cols-3">
-                {visibleProjects.map((item) => (
-                  <ProjectCard key={item.id} project={item} onOpen={openProject} />
-                ))}
+              visibleProjects.length > 0 && (
+                <div className="grid grid-cols-1 items-start gap-x-7 gap-y-10 sm:grid-cols-2 lg:grid-cols-3">
+                  {visibleProjects.map((item) => (
+                    <ProjectCard key={item.id} project={item} onOpen={openProject} />
+                  ))}
+                </div>
+              )
+            )}
+
+            {showWriting && (
+              <div
+                className={visibleProjects.length > 0 ? "mt-14 border-t border-border pt-14" : ""}
+              >
+                <p className="mb-2 text-xs font-semibold uppercase tracking-[0.14em] text-muted-foreground">
+                  Dikaios of Abba
+                </p>
+                <h3 className="editorial-title text-3xl leading-tight sm:text-4xl">Writing.</h3>
+                <div className="mt-4">
+                  {ARTICLES.map((article) => (
+                    <ArticleCard key={article.id} article={article} />
+                  ))}
+                </div>
+                <a
+                  href={SOCIAL_LINKS.substack.url}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="mt-6 inline-flex min-h-11 items-center gap-2 text-sm font-medium hover:text-primary"
+                >
+                  Explore more writing <ArrowUpRight aria-hidden="true" className="size-4" />
+                </a>
               </div>
             )}
 
-            <div className="mt-9 flex flex-wrap items-center justify-between gap-4 border-l-2 border-accent pl-4">
+            <div className="mt-14 flex flex-wrap items-center justify-between gap-4 border-l-2 border-accent pl-4">
               <p className="max-w-2xl text-sm leading-6 text-muted-foreground">
                 A selection of personal, independently created work. No featured piece is presented
                 as a commissioned brand campaign.
@@ -368,46 +405,6 @@ function CreatorPortfolio() {
             >
               A little more about my work <ArrowUpRight aria-hidden="true" className="size-4" />
             </a>
-          </div>
-        </section>
-
-        <section
-          id="writing"
-          aria-labelledby="writing-title"
-          className="border-y border-border/70 bg-secondary/50"
-        >
-          <div className="mx-auto max-w-[1440px] px-5 py-16 sm:px-10 sm:py-20 lg:px-16 lg:py-24">
-            <div className="mb-10 grid grid-cols-1 gap-5 sm:grid-cols-[1fr_auto] sm:items-end sm:gap-8">
-              <div>
-                <p className="mb-4 text-xs font-semibold uppercase tracking-[0.14em] text-muted-foreground">
-                  Dikaios of Abba
-                </p>
-                <h2
-                  id="writing-title"
-                  className="editorial-title text-5xl leading-none sm:text-6xl"
-                >
-                  From the journal<span className="text-primary">.</span>
-                </h2>
-                <p className="mt-4 max-w-xl text-base leading-7 text-muted-foreground">
-                  Heart reflections, quiet moments and stories of becoming — a selection from Ella’s
-                  Substack, Dikaios of Abba.
-                </p>
-              </div>
-              <a
-                href={SOCIAL_LINKS.substack.url}
-                target="_blank"
-                rel="noreferrer"
-                className="inline-flex min-h-11 items-center gap-2 text-sm font-medium hover:text-primary"
-              >
-                Explore more writing <ArrowUpRight aria-hidden="true" className="size-4" />
-              </a>
-            </div>
-
-            <div>
-              {ARTICLES.map((article) => (
-                <ArticleCard key={article.id} article={article} />
-              ))}
-            </div>
           </div>
         </section>
 
@@ -515,60 +512,6 @@ function CreatorPortfolio() {
         </section>
 
         <section
-          aria-labelledby="process-title"
-          className="border-y border-border/70 bg-secondary/50"
-        >
-          <div className="mx-auto max-w-[1440px] px-5 py-16 sm:px-10 sm:py-20 lg:px-16 lg:py-24">
-            <div className="mb-10 max-w-xl">
-              <p className="mb-4 text-xs font-semibold uppercase tracking-[0.14em] text-muted-foreground">
-                From conversation to creation
-              </p>
-              <h2 id="process-title" className="editorial-title text-5xl leading-none sm:text-6xl">
-                A thoughtful process.
-              </h2>
-            </div>
-            <ol className="grid grid-cols-1 gap-0 sm:grid-cols-2 lg:grid-cols-4">
-              {[
-                [
-                  "01",
-                  "Listen",
-                  "We start with your brief, audience and what you want the story to do.",
-                ],
-                [
-                  "02",
-                  "Imagine",
-                  "We find a concept and creative direction that feel right for your brand.",
-                ],
-                [
-                  "03",
-                  "Make",
-                  "I bring the agreed idea to life with care, craft and a clear point of view.",
-                ],
-                [
-                  "04",
-                  "Share",
-                  "You receive the agreed creative deliverables, ready for their next chapter.",
-                ],
-              ].map(([number, title, description]) => (
-                <li
-                  key={number}
-                  className="border-t border-border py-6 sm:mr-5 sm:pr-3 lg:mr-6 lg:py-7"
-                >
-                  <p className="flex items-center justify-between text-xs tabular-nums text-muted-foreground">
-                    <span>{number}</span>
-                    <span aria-hidden="true" className="h-px w-12 bg-border lg:w-16" />
-                  </p>
-                  <h3 className="mt-7 font-display text-3xl">{title}</h3>
-                  <p className="mt-3 max-w-[250px] text-sm leading-6 text-muted-foreground">
-                    {description}
-                  </p>
-                </li>
-              ))}
-            </ol>
-          </div>
-        </section>
-
-        <section
           id="contact"
           aria-labelledby="contact-title"
           className="relative mx-auto max-w-[1440px] overflow-hidden px-5 py-20 sm:px-10 sm:py-28 lg:px-16 lg:py-36"
@@ -631,9 +574,6 @@ function CreatorPortfolio() {
           <div className="flex flex-wrap items-center gap-x-6 gap-y-3 text-xs text-muted-foreground">
             <a className="min-h-11 content-center hover:text-foreground" href="#work">
               Work
-            </a>
-            <a className="min-h-11 content-center hover:text-foreground" href="#writing">
-              Writing
             </a>
             <a className="min-h-11 content-center hover:text-foreground" href="#about">
               About

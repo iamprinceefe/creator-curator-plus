@@ -1,13 +1,57 @@
 import { useEffect, useState } from "react";
-import { ArrowLeft, ArrowRight, ArrowUpRight, Instagram, Music2, Play } from "lucide-react";
+import {
+  ArrowLeft,
+  ArrowRight,
+  ArrowUpRight,
+  Instagram,
+  Music2,
+  Play,
+  Youtube,
+} from "lucide-react";
 
 import { Dialog, DialogContent, DialogTitle } from "@/components/ui/dialog";
 import { TikTokEmbed } from "@/components/portfolio/tiktok-embed";
+import { YouTubeEmbed } from "@/components/portfolio/youtube-embed";
 import { type Project, getProjectsByCategory } from "@/data/projects";
 import { cn } from "@/lib/utils";
 
-const SOURCE_ICON = { instagram: Instagram, tiktok: Music2 } as const;
-const SOURCE_LABEL = { instagram: "View on Instagram", tiktok: "View on TikTok" } as const;
+const SOURCE_ICON = { instagram: Instagram, tiktok: Music2, youtube: Youtube } as const;
+const SOURCE_LABEL = {
+  instagram: "View on Instagram",
+  tiktok: "View on TikTok",
+  youtube: "Watch on YouTube",
+} as const;
+
+function VideoPoster({
+  project,
+  aspect,
+  onPlay,
+}: {
+  project: Project;
+  aspect: string;
+  onPlay: () => void;
+}) {
+  return (
+    <button
+      type="button"
+      onClick={onPlay}
+      className={cn("group relative block max-h-[60vh] w-full", aspect)}
+      aria-label={`Play ${project.title}`}
+    >
+      <img src={project.image} alt={project.alt} className="size-full object-cover" />
+      <span
+        aria-hidden="true"
+        className="pointer-events-none absolute inset-0 bg-black/20 transition-colors group-hover:bg-black/35"
+      />
+      <span
+        aria-hidden="true"
+        className="absolute left-1/2 top-1/2 grid size-16 -translate-x-1/2 -translate-y-1/2 place-items-center rounded-full bg-background/90 backdrop-blur-sm transition-transform group-hover:scale-105"
+      >
+        <Play className="ml-0.5 size-6 fill-forest text-forest" />
+      </span>
+    </button>
+  );
+}
 
 export function ProjectLightbox({
   project,
@@ -50,6 +94,14 @@ export function ProjectLightbox({
             </div>
           )}
 
+          {project.mediaType === "text" && (
+            <div className="bg-forest p-8 text-primary-foreground sm:p-10">
+              <span aria-hidden="true" className="editorial-title block text-5xl text-citron">
+                &ldquo;
+              </span>
+            </div>
+          )}
+
           {project.mediaType === "tiktok" && project.tiktokUrl && (
             <div className="bg-muted">
               {playing ? (
@@ -57,26 +109,25 @@ export function ProjectLightbox({
                   <TikTokEmbed url={project.tiktokUrl} />
                 </div>
               ) : (
-                <button
-                  type="button"
-                  onClick={() => setPlaying(true)}
-                  className="group relative block aspect-[9/16] max-h-[60vh] w-full"
-                  aria-label={`Play ${project.title} on TikTok`}
-                >
-                  <img src={project.image} alt={project.alt} className="size-full object-cover" />
-                  <span
-                    aria-hidden="true"
-                    className="pointer-events-none absolute inset-0 bg-black/20 transition-colors group-hover:bg-black/35"
-                  />
-                  <span
-                    aria-hidden="true"
-                    className={cn(
-                      "absolute left-1/2 top-1/2 grid size-16 -translate-x-1/2 -translate-y-1/2 place-items-center rounded-full bg-background/90 backdrop-blur-sm transition-transform group-hover:scale-105",
-                    )}
-                  >
-                    <Play className="ml-0.5 size-6 fill-forest text-forest" />
-                  </span>
-                </button>
+                <VideoPoster
+                  project={project}
+                  aspect="aspect-[9/16]"
+                  onPlay={() => setPlaying(true)}
+                />
+              )}
+            </div>
+          )}
+
+          {project.mediaType === "youtube" && project.youtubeId && (
+            <div className="bg-muted">
+              {playing ? (
+                <YouTubeEmbed videoId={project.youtubeId} title={project.title} />
+              ) : (
+                <VideoPoster
+                  project={project}
+                  aspect="aspect-video"
+                  onPlay={() => setPlaying(true)}
+                />
               )}
             </div>
           )}
