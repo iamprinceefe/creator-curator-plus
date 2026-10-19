@@ -84,21 +84,13 @@ export function ProjectLightbox({
         >
           <DialogTitle className="sr-only">{project.title}</DialogTitle>
 
-          {project.mediaType === "image" && (
+          {(project.mediaType === "image" || project.mediaType === "instagram") && (
             <div className="bg-muted">
               <img
                 src={project.image}
                 alt={project.alt}
                 className="max-h-[60vh] w-full object-contain"
               />
-            </div>
-          )}
-
-          {project.mediaType === "text" && (
-            <div className="bg-forest p-8 text-primary-foreground sm:p-10">
-              <span aria-hidden="true" className="editorial-title block text-5xl text-citron">
-                &ldquo;
-              </span>
             </div>
           )}
 

@@ -35,7 +35,7 @@ function ArticlePage() {
         hash="writing"
         className="inline-flex min-h-11 items-center gap-2 text-sm font-medium text-muted-foreground hover:text-foreground"
       >
-        <ArrowLeft aria-hidden="true" className="size-4" /> Back to Ella Roli
+        <ArrowLeft aria-hidden="true" className="size-4" /> Back to my portfolio
       </Link>
 
       <p className="mt-10 text-xs font-semibold uppercase tracking-[0.14em] text-muted-foreground">
@@ -57,8 +57,8 @@ function ArticlePage() {
 
       <div className="mt-10 border-y border-border py-6">
         <p className="text-sm leading-6 text-muted-foreground">
-          This is an excerpt, shared with Ella's words preserved exactly as written. Read the piece
-          in full — and join the conversation in the comments — on Dikaios of Abba.
+          This is an excerpt, shared with my words preserved exactly as written. Read the piece in
+          full — and join the conversation in the comments — on Dikaios of Abba.
         </p>
         <a
           href={article.sourceUrl}

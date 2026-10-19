@@ -1,4 +1,4 @@
-import { ArrowUpRight, Play, Quote } from "lucide-react";
+import { ArrowUpRight, Play } from "lucide-react";
 
 import type { Project } from "@/data/projects";
 import { cn } from "@/lib/utils";
@@ -7,7 +7,7 @@ const MEDIA_LABEL: Record<Project["mediaType"], string> = {
   image: "Illustration",
   tiktok: "Reel",
   youtube: "Video",
-  text: "Reflection",
+  instagram: "Reel",
 };
 
 export function ProjectCard({
@@ -17,7 +17,10 @@ export function ProjectCard({
   project: Project;
   onOpen: (slug: string) => void;
 }) {
-  const hasPlayOverlay = project.mediaType === "tiktok" || project.mediaType === "youtube";
+  const hasPlayOverlay =
+    project.mediaType === "tiktok" ||
+    project.mediaType === "youtube" ||
+    project.mediaType === "instagram";
 
   return (
     <button
@@ -27,29 +30,18 @@ export function ProjectCard({
     >
       <div
         className={cn(
-          "relative overflow-hidden",
-          project.mediaType === "text" ? "bg-forest text-primary-foreground" : "bg-muted",
-          project.mediaType === "tiktok" && "aspect-[9/16]",
+          "relative overflow-hidden bg-muted",
+          (project.mediaType === "tiktok" || project.mediaType === "instagram") && "aspect-[9/16]",
           project.mediaType === "youtube" && "aspect-video",
           project.mediaType === "image" && "aspect-[4/5]",
-          project.mediaType === "text" && "aspect-square",
         )}
       >
-        {project.mediaType === "text" ? (
-          <div className="flex size-full flex-col justify-center gap-4 p-6">
-            <Quote aria-hidden="true" className="size-7 shrink-0 text-citron" />
-            <p className="line-clamp-5 text-base leading-6 text-primary-foreground/90">
-              {project.description}
-            </p>
-          </div>
-        ) : (
-          <img
-            src={project.image}
-            alt={project.alt}
-            loading="lazy"
-            className="size-full object-cover transition-transform duration-500 group-hover:scale-[1.035]"
-          />
-        )}
+        <img
+          src={project.image}
+          alt={project.alt}
+          loading="lazy"
+          className="size-full object-cover transition-transform duration-500 group-hover:scale-[1.035]"
+        />
 
         {hasPlayOverlay && (
           <>

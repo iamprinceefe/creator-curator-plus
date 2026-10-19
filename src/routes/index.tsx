@@ -30,12 +30,12 @@ export const Route = createFileRoute("/")({
       {
         name: "description",
         content:
-          "Ella Roli is a visual storyteller, illustrator and creative director making cinematic content and thoughtful stories for brands and creators.",
+          "I'm Ella Roli, a visual storyteller, illustrator and creative director making cinematic content and thoughtful stories for brands and creators.",
       },
       { property: "og:title", content: "Ella Roli — Visual Storyteller & Creative Director" },
       {
         property: "og:description",
-        content: "Cinematic content, thoughtful words and illustration-led ideas by Ella Roli.",
+        content: "Cinematic content, thoughtful words and illustration-led ideas — made by me.",
       },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary" },
@@ -78,7 +78,7 @@ function CreatorPortfolio() {
         >
           <img
             src={portrait}
-            alt="Ella Roli, laughing in a white shirt against a chartreuse green backdrop."
+            alt="Me, laughing in a white shirt against a chartreuse green backdrop."
             fetchPriority="high"
             className="absolute inset-0 -z-10 size-full object-cover object-[center_58%]"
           />
@@ -342,7 +342,7 @@ function CreatorPortfolio() {
             <div className="aspect-[0.9] overflow-hidden bg-muted">
               <img
                 src={storyboard}
-                alt="Ella standing beside her playful illustrated collage and presenting its ideas."
+                alt="Me, standing beside my playful illustrated collage and presenting its ideas."
                 loading="lazy"
                 className="size-full object-cover object-[left_center]"
               />
@@ -362,8 +362,8 @@ function CreatorPortfolio() {
             </h2>
             <div className="mt-7 space-y-5 text-base leading-7 text-muted-foreground">
               <p>
-                Ella is a visual storyteller, creative director and illustrator working between
-                cinematic video, poetic narration and hand-drawn illustration. Her work finds the
+                I'm a visual storyteller, creative director and illustrator working between
+                cinematic video, poetic narration and hand-drawn illustration. My work finds the
                 human truths that make a story stay with you — pictured first, then brought to life.
               </p>
               <p>
@@ -390,7 +390,7 @@ function CreatorPortfolio() {
             id="brands-title"
             className="mb-6 text-xs font-semibold uppercase tracking-[0.14em] text-muted-foreground"
           >
-            Brands & communities she's worked with
+            Brands & communities I've worked with
           </p>
           <div className="flex flex-wrap items-center gap-8">
             {BRANDS.map((brand) => (
@@ -405,7 +405,7 @@ function CreatorPortfolio() {
                   src={brand.logo}
                   alt={`${brand.name} logo`}
                   loading="lazy"
-                  className="size-12 rounded-full object-cover grayscale transition-all duration-300 group-hover:grayscale-0"
+                  className="size-12 rounded-full object-cover"
                 />
                 <span className="text-sm font-medium text-muted-foreground transition-colors group-hover:text-foreground">
                   {brand.name}

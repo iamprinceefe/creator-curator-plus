@@ -1,3 +1,6 @@
+import thumbShowNTellJune6 from "@/assets/instagram/show-n-tell-june-6.jpg";
+import thumbShowNTellJune26 from "@/assets/instagram/show-n-tell-june-26.jpg";
+import thumbStudyingNikeAd from "@/assets/instagram/studying-nike-ad.jpg";
 import thumbADayOut from "@/assets/tiktok/a-day-out.jpg";
 import thumbBirthdayRecap from "@/assets/tiktok/birthday-recap.jpg";
 import thumbBridalTeam from "@/assets/tiktok/bridal-team.jpg";
@@ -15,7 +18,7 @@ export type Project = {
   title: string;
   description: string;
   category: "content-storytelling" | "arts-writings";
-  mediaType: "image" | "tiktok" | "youtube" | "text";
+  mediaType: "image" | "tiktok" | "youtube" | "instagram";
   image?: string;
   alt?: string;
   tiktokUrl?: string;
@@ -34,9 +37,11 @@ export const PROJECTS: Project[] = [
     slug: "show-n-tell-june-6",
     title: "Show n' Tell",
     description:
-      "A community showcase hosted by The Cray — Hamilton's hub for Christian creatives — where members share their work and the story behind it. Ella is part of the creative community behind it.",
+      "A community showcase hosted by The Cray — Hamilton's hub for Christian creatives — where members share their work and the story behind it. I'm part of the creative community behind it.",
     category: "arts-writings",
-    mediaType: "text",
+    mediaType: "instagram",
+    image: thumbShowNTellJune6,
+    alt: "A still from The Cray's Show n' Tell reel.",
     sourcePlatform: "instagram",
     sourceUrl: "https://www.instagram.com/thecrayhub/reel/DZPoJvltB92/",
     featured: true,
@@ -49,7 +54,9 @@ export const PROJECTS: Project[] = [
     description:
       "The next edition of The Cray's Show n' Tell — an ongoing series bringing Hamilton's Christian creative community together to showcase their work.",
     category: "arts-writings",
-    mediaType: "text",
+    mediaType: "instagram",
+    image: thumbShowNTellJune26,
+    alt: "Title card for The Cray's Show n' Tell, June 26 edition.",
     sourcePlatform: "instagram",
     sourceUrl: "https://www.instagram.com/thecrayhub/reel/DZu7FLQtlPB/",
     featured: true,
@@ -62,11 +69,11 @@ export const PROJECTS: Project[] = [
     slug: "the-god-who-fathers",
     title: "The God Who Fathers",
     description:
-      "A guest conversation on the Creatively Curious podcast by Saphar Co. — Ella talks candidly about her childhood, faith, and the relationships that shape who she's become.",
+      "A guest conversation on the Creatively Curious podcast by Saphar Co. — I talk candidly about my childhood, faith, and the relationships that shape who I've become.",
     category: "content-storytelling",
     mediaType: "youtube",
     image: thumbGodWhoFathers,
-    alt: "Thumbnail for the podcast episode The God Who Fathers, featuring Ella Roli.",
+    alt: "Thumbnail for the podcast episode The God Who Fathers, featuring me.",
     youtubeId: "XWQbNoMCf6k",
     sourcePlatform: "youtube",
     sourceUrl: "https://www.youtube.com/watch?v=XWQbNoMCf6k",
@@ -82,7 +89,7 @@ export const PROJECTS: Project[] = [
     category: "content-storytelling",
     mediaType: "youtube",
     image: thumbAnointed,
-    alt: "Title card for the short film Anointed, featuring Ella Roli.",
+    alt: "Title card for the short film Anointed, featuring me.",
     youtubeId: "dzuZp4q7pW8",
     sourcePlatform: "youtube",
     sourceUrl: "https://www.youtube.com/watch?v=dzuZp4q7pW8",
@@ -94,7 +101,7 @@ export const PROJECTS: Project[] = [
     slug: "who-am-i",
     title: "Who Am I?",
     description:
-      "Episode one of a personal video series on finding purpose and direction — part reflection, part visual essay, shot and edited by Ella.",
+      "Episode one of a personal video series on finding purpose and direction — part reflection, part visual essay, shot and edited by me.",
     category: "content-storytelling",
     mediaType: "youtube",
     image: thumbWhoAmI,
@@ -112,9 +119,11 @@ export const PROJECTS: Project[] = [
     slug: "how-a-nike-ad-inspired-a-campaign",
     title: "Studying a Nike Ad",
     description:
-      "“Creative inspiration doesn't have to start with a blank page.” A behind-the-scenes look at how a Nike ad's sound and storytelling structure shaped one of her own campaign concepts — without copying it.",
+      "“Creative inspiration doesn't have to start with a blank page.” A behind-the-scenes look at how a Nike ad's sound and storytelling structure shaped one of my own campaign concepts — without copying it.",
     category: "content-storytelling",
-    mediaType: "text",
+    mediaType: "instagram",
+    image: thumbStudyingNikeAd,
+    alt: "A still from my Instagram reel on studying a Nike ad's storytelling structure.",
     sourcePlatform: "instagram",
     sourceUrl: "https://www.instagram.com/ellaroli_/reel/DekQc44xHfs/",
     featured: true,
@@ -127,11 +136,11 @@ export const PROJECTS: Project[] = [
     slug: "culture",
     title: "Culture",
     description:
-      "A West African traditional ceremony, captured in full color and sound — her most-watched video, resonating with a wide community of viewers who saw their own culture reflected in it.",
+      "A West African traditional ceremony, captured in full color and sound — my most-watched video, resonating with a wide community of viewers who saw their own culture reflected in it.",
     category: "content-storytelling",
     mediaType: "tiktok",
     image: thumbCulture,
-    alt: "A still from Ella's TikTok video of a West African traditional ceremony.",
+    alt: "A still from my TikTok video of a West African traditional ceremony.",
     tiktokUrl: "https://www.tiktok.com/@tmerolique/video/7348102848556715269",
     sourcePlatform: "tiktok",
     sourceUrl: "https://www.tiktok.com/@tmerolique/video/7348102848556715269",
@@ -144,11 +153,11 @@ export const PROJECTS: Project[] = [
     slug: "bridal-transition",
     title: "Bridal Transition",
     description:
-      "A playful transition edit made for a bride's big day — mobile videography with a CapCut-powered creative flourish.",
+      "A playful transition edit I made for a bride's big day — mobile videography with a CapCut-powered creative flourish.",
     category: "content-storytelling",
     mediaType: "tiktok",
     image: thumbBridalTransition,
-    alt: "A still from Ella's bridal transition TikTok video.",
+    alt: "A still from my bridal transition TikTok video.",
     tiktokUrl: "https://www.tiktok.com/@tmerolique/video/7406331100345289990",
     sourcePlatform: "tiktok",
     sourceUrl: "https://www.tiktok.com/@tmerolique/video/7406331100345289990",
@@ -160,11 +169,11 @@ export const PROJECTS: Project[] = [
     slug: "a-day-out",
     title: "A Day Out",
     description:
-      "An afternoon with friends at a board game café in downtown Toronto — the kind of everyday memory-making that defines her mobile videography style.",
+      "An afternoon with friends at a board game café in downtown Toronto — the kind of everyday memory-making that defines my mobile videography style.",
     category: "content-storytelling",
     mediaType: "tiktok",
     image: thumbADayOut,
-    alt: "A still from Ella's TikTok video of a day out in downtown Toronto.",
+    alt: "A still from my TikTok video of a day out in downtown Toronto.",
     tiktokUrl: "https://www.tiktok.com/@tmerolique/video/7383546973619522821",
     sourcePlatform: "tiktok",
     sourceUrl: "https://www.tiktok.com/@tmerolique/video/7383546973619522821",
@@ -181,7 +190,7 @@ export const PROJECTS: Project[] = [
     category: "content-storytelling",
     mediaType: "tiktok",
     image: thumbBridalTeam,
-    alt: "A still from Ella's TikTok video of a bridal shower.",
+    alt: "A still from my TikTok video of a bridal shower.",
     tiktokUrl: "https://www.tiktok.com/@tmerolique/video/7364632104237337862",
     sourcePlatform: "tiktok",
     sourceUrl: "https://www.tiktok.com/@tmerolique/video/7364632104237337862",
@@ -197,7 +206,7 @@ export const PROJECTS: Project[] = [
     category: "content-storytelling",
     mediaType: "tiktok",
     image: thumbLove,
-    alt: "A still from Ella's TikTok video of a backyard wedding.",
+    alt: "A still from my TikTok video of a backyard wedding.",
     tiktokUrl: "https://www.tiktok.com/@tmerolique/video/7364526595949776133",
     sourcePlatform: "tiktok",
     sourceUrl: "https://www.tiktok.com/@tmerolique/video/7364526595949776133",
@@ -213,7 +222,7 @@ export const PROJECTS: Project[] = [
     category: "content-storytelling",
     mediaType: "tiktok",
     image: thumbBirthdayRecap,
-    alt: "A still from Ella's TikTok video of a birthday dinner celebration.",
+    alt: "A still from my TikTok video of a birthday dinner celebration.",
     tiktokUrl: "https://www.tiktok.com/@tmerolique/video/7357179228703460613",
     sourcePlatform: "tiktok",
     sourceUrl: "https://www.tiktok.com/@tmerolique/video/7357179228703460613",
@@ -229,7 +238,7 @@ export const PROJECTS: Project[] = [
     category: "content-storytelling",
     mediaType: "tiktok",
     image: thumbPovBirthday,
-    alt: "A still from Ella's TikTok video of another birthday dinner celebration.",
+    alt: "A still from my TikTok video of another birthday dinner celebration.",
     tiktokUrl: "https://www.tiktok.com/@tmerolique/video/7384178887288311046",
     sourcePlatform: "tiktok",
     sourceUrl: "https://www.tiktok.com/@tmerolique/video/7384178887288311046",

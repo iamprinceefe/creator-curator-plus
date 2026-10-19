@@ -82,13 +82,13 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       {
         name: "description",
         content:
-          "Meet Ella Roli: visual storyteller, illustrator and creative director creating cinematic stories with heart.",
+          "I'm Ella Roli: visual storyteller, illustrator and creative director creating cinematic stories with heart.",
       },
       { name: "author", content: "Ella Roli" },
       { property: "og:title", content: "Ella Roli — Visual Storyteller & Creative Director" },
       {
         property: "og:description",
-        content: "Cinematic content, thoughtful words and illustration-led ideas by Ella Roli.",
+        content: "Cinematic content, thoughtful words and illustration-led ideas — made by me.",
       },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary" },
