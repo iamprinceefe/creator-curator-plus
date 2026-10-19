@@ -259,23 +259,13 @@ function CreatorPortfolio() {
           className="border-y border-border/70 bg-secondary/50"
         >
           <div className="mx-auto max-w-[1440px] px-5 py-16 sm:px-10 sm:py-20 lg:px-16 lg:py-24">
-            <div className="mb-8 grid grid-cols-1 gap-5 sm:grid-cols-[1fr_auto] sm:items-end sm:gap-8">
-              <div>
-                <p className="mb-4 text-xs font-semibold uppercase tracking-[0.14em] text-muted-foreground">
-                  A few things I’ve made
-                </p>
-                <h2 id="work-title" className="editorial-title text-5xl leading-none sm:text-6xl">
-                  Selected work<span className="text-primary">.</span>
-                </h2>
-              </div>
-              <a
-                href={SOCIAL_LINKS.instagram.url}
-                target="_blank"
-                rel="noreferrer"
-                className="inline-flex min-h-11 items-center gap-2 text-sm font-medium hover:text-primary"
-              >
-                See more on Instagram <ArrowUpRight aria-hidden="true" className="size-4" />
-              </a>
+            <div className="mb-8">
+              <p className="mb-4 text-xs font-semibold uppercase tracking-[0.14em] text-muted-foreground">
+                A few things I’ve made
+              </p>
+              <h2 id="work-title" className="editorial-title text-5xl leading-none sm:text-6xl">
+                Selected work<span className="text-primary">.</span>
+              </h2>
             </div>
 
             <div className="mb-12">
@@ -320,14 +310,24 @@ function CreatorPortfolio() {
                 A selection of personal, independently created work. No featured piece is presented
                 as a commissioned brand campaign.
               </p>
-              <a
-                href={SOCIAL_LINKS.tiktok.url}
-                target="_blank"
-                rel="noreferrer"
-                className="inline-flex min-h-11 shrink-0 items-center gap-2 text-sm font-medium hover:text-primary"
-              >
-                See more on TikTok <ArrowUpRight aria-hidden="true" className="size-4" />
-              </a>
+              <div className="flex shrink-0 flex-col items-end gap-2">
+                <a
+                  href={SOCIAL_LINKS.tiktok.url}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="inline-flex min-h-11 items-center gap-2 text-sm font-medium hover:text-primary"
+                >
+                  See more on TikTok <ArrowUpRight aria-hidden="true" className="size-4" />
+                </a>
+                <a
+                  href={SOCIAL_LINKS.instagram.url}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="inline-flex min-h-11 items-center gap-2 text-sm font-medium hover:text-primary"
+                >
+                  See more on Instagram <ArrowUpRight aria-hidden="true" className="size-4" />
+                </a>
+              </div>
             </div>
           </div>
         </section>
