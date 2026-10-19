@@ -320,14 +320,24 @@ function CreatorPortfolio() {
                 A selection of personal, independently created work. No featured piece is presented
                 as a commissioned brand campaign.
               </p>
-              <a
-                href={SOCIAL_LINKS.tiktok.url}
-                target="_blank"
-                rel="noreferrer"
-                className="inline-flex min-h-11 shrink-0 items-center gap-2 text-sm font-medium hover:text-primary"
-              >
-                See more on TikTok <ArrowUpRight aria-hidden="true" className="size-4" />
-              </a>
+              <div className="flex shrink-0 flex-col items-end gap-2">
+                <a
+                  href={SOCIAL_LINKS.tiktok.url}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="inline-flex min-h-11 items-center gap-2 text-sm font-medium hover:text-primary"
+                >
+                  See more on TikTok <ArrowUpRight aria-hidden="true" className="size-4" />
+                </a>
+                <a
+                  href={SOCIAL_LINKS.instagram.url}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="inline-flex min-h-11 items-center gap-2 text-sm font-medium hover:text-primary"
+                >
+                  See more on Instagram <ArrowUpRight aria-hidden="true" className="size-4" />
+                </a>
+              </div>
             </div>
           </div>
         </section>

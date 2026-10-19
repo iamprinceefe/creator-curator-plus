@@ -31,13 +31,14 @@ export function ProjectCard({
           project.mediaType === "text" ? "bg-forest text-primary-foreground" : "bg-muted",
           project.mediaType === "tiktok" && "aspect-[9/16]",
           project.mediaType === "youtube" && "aspect-video",
-          (project.mediaType === "image" || project.mediaType === "text") && "aspect-[4/5]",
+          project.mediaType === "image" && "aspect-[4/5]",
+          project.mediaType === "text" && "aspect-square",
         )}
       >
         {project.mediaType === "text" ? (
-          <div className="flex size-full flex-col justify-between p-5">
-            <Quote aria-hidden="true" className="size-6 text-citron" />
-            <p className="line-clamp-6 text-sm leading-6 text-primary-foreground/85">
+          <div className="flex size-full flex-col justify-center gap-4 p-6">
+            <Quote aria-hidden="true" className="size-7 shrink-0 text-citron" />
+            <p className="line-clamp-5 text-base leading-6 text-primary-foreground/90">
               {project.description}
             </p>
           </div>
