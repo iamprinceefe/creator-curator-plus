@@ -59,7 +59,6 @@ function CreatorPortfolio() {
     return scoped.filter((p) => p.mediaType !== "youtube");
   }, [category]);
   const showYouTube = category === "all" || category === "content-storytelling";
-  const showWriting = category === "all" || category === "arts-writings";
   const activeProject = activeSlug ? getProjectBySlug(activeSlug) : undefined;
 
   return (
@@ -304,41 +303,15 @@ function CreatorPortfolio() {
               </div>
             )}
 
-            {visibleProjects.length === 0 && !showWriting ? (
+            {visibleProjects.length === 0 ? (
               <p className="py-16 text-center text-sm text-muted-foreground">
                 Nothing in this category yet — check back soon.
               </p>
             ) : (
-              visibleProjects.length > 0 && (
-                <div className="grid grid-cols-1 items-start gap-x-7 gap-y-10 sm:grid-cols-2 lg:grid-cols-3">
-                  {visibleProjects.map((item) => (
-                    <ProjectCard key={item.id} project={item} onOpen={openProject} />
-                  ))}
-                </div>
-              )
-            )}
-
-            {showWriting && (
-              <div
-                className={visibleProjects.length > 0 ? "mt-14 border-t border-border pt-14" : ""}
-              >
-                <p className="mb-2 text-xs font-semibold uppercase tracking-[0.14em] text-muted-foreground">
-                  Dikaios of Abba
-                </p>
-                <h3 className="editorial-title text-3xl leading-tight sm:text-4xl">Writing.</h3>
-                <div className="mt-4">
-                  {ARTICLES.map((article) => (
-                    <ArticleCard key={article.id} article={article} />
-                  ))}
-                </div>
-                <a
-                  href={SOCIAL_LINKS.substack.url}
-                  target="_blank"
-                  rel="noreferrer"
-                  className="mt-6 inline-flex min-h-11 items-center gap-2 text-sm font-medium hover:text-primary"
-                >
-                  Explore more writing <ArrowUpRight aria-hidden="true" className="size-4" />
-                </a>
+              <div className="grid grid-cols-1 items-start gap-x-7 gap-y-10 sm:grid-cols-2 lg:grid-cols-3">
+                {visibleProjects.map((item) => (
+                  <ProjectCard key={item.id} project={item} onOpen={openProject} />
+                ))}
               </div>
             )}
 
@@ -405,6 +378,42 @@ function CreatorPortfolio() {
             >
               A little more about my work <ArrowUpRight aria-hidden="true" className="size-4" />
             </a>
+          </div>
+        </section>
+
+        <section
+          id="writing"
+          aria-labelledby="writing-title"
+          className="border-y border-border/70 bg-secondary/50"
+        >
+          <div className="mx-auto max-w-[1440px] px-5 py-16 sm:px-10 sm:py-20 lg:px-16 lg:py-24">
+            <div className="mb-10 grid grid-cols-1 gap-5 sm:grid-cols-[1fr_auto] sm:items-end sm:gap-8">
+              <div>
+                <p className="mb-4 text-xs font-semibold uppercase tracking-[0.14em] text-muted-foreground">
+                  Dikaios of Abba
+                </p>
+                <h2
+                  id="writing-title"
+                  className="editorial-title text-5xl leading-none sm:text-6xl"
+                >
+                  Writing<span className="text-primary">.</span>
+                </h2>
+              </div>
+              <a
+                href={SOCIAL_LINKS.substack.url}
+                target="_blank"
+                rel="noreferrer"
+                className="inline-flex min-h-11 items-center gap-2 text-sm font-medium hover:text-primary"
+              >
+                See more on Substack <ArrowUpRight aria-hidden="true" className="size-4" />
+              </a>
+            </div>
+
+            <div>
+              {ARTICLES.map((article) => (
+                <ArticleCard key={article.id} article={article} />
+              ))}
+            </div>
           </div>
         </section>
 
