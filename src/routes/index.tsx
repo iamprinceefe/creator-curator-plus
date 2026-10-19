@@ -11,6 +11,7 @@ import { ProjectCard } from "@/components/portfolio/project-card";
 import { ProjectLightbox } from "@/components/portfolio/project-lightbox";
 import { SocialLinks } from "@/components/portfolio/social-links";
 import { ARTICLES } from "@/data/articles";
+import { BRANDS } from "@/data/brands";
 import type { CategorySlug } from "@/data/categories";
 import { getFeaturedYouTube, getProjectBySlug, PROJECTS } from "@/data/projects";
 import { SOCIAL_LINKS } from "@/data/social";
@@ -378,6 +379,39 @@ function CreatorPortfolio() {
             >
               A little more about my work <ArrowUpRight aria-hidden="true" className="size-4" />
             </a>
+          </div>
+        </section>
+
+        <section
+          aria-labelledby="brands-title"
+          className="mx-auto max-w-[1440px] px-5 py-12 sm:px-10 lg:px-16"
+        >
+          <p
+            id="brands-title"
+            className="mb-6 text-xs font-semibold uppercase tracking-[0.14em] text-muted-foreground"
+          >
+            Brands & communities she's worked with
+          </p>
+          <div className="flex flex-wrap items-center gap-8">
+            {BRANDS.map((brand) => (
+              <a
+                key={brand.name}
+                href={brand.url}
+                target="_blank"
+                rel="noreferrer"
+                className="group flex items-center gap-3"
+              >
+                <img
+                  src={brand.logo}
+                  alt={`${brand.name} logo`}
+                  loading="lazy"
+                  className="size-12 rounded-full object-cover grayscale transition-all duration-300 group-hover:grayscale-0"
+                />
+                <span className="text-sm font-medium text-muted-foreground transition-colors group-hover:text-foreground">
+                  {brand.name}
+                </span>
+              </a>
+            ))}
           </div>
         </section>
 

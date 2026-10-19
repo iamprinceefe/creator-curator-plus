@@ -1,4 +1,3 @@
-import illustrationArtwork from "@/assets/ella-instagram-artwork.jpg";
 import thumbADayOut from "@/assets/tiktok/a-day-out.jpg";
 import thumbBirthdayRecap from "@/assets/tiktok/birthday-recap.jpg";
 import thumbBridalTeam from "@/assets/tiktok/bridal-team.jpg";
@@ -29,21 +28,32 @@ export type Project = {
 };
 
 export const PROJECTS: Project[] = [
-  // --- Arts & Writings ---
+  // --- Arts & Writings: Show n' Tell (The Cray) ---
   {
-    id: "a-return-to-drawing",
-    slug: "a-return-to-drawing",
-    title: "A Return to Drawing",
+    id: "show-n-tell-june-6",
+    slug: "show-n-tell-june-6",
+    title: "Show n' Tell",
     description:
-      "I've been drawing since I was three. Somewhere along the way I stopped — then in 2024, I picked the pencil back up and haven't stopped since. These are pieces made between August and October: sketches that are less about being perfect, and more about being felt.",
+      "A community showcase hosted by The Cray — Hamilton's hub for Christian creatives — where members share their work and the story behind it. Ella is part of the creative community behind it.",
     category: "arts-writings",
-    mediaType: "image",
-    image: illustrationArtwork,
-    alt: "A colorful hand-drawn illustrated page from Ella's daily sketch series.",
+    mediaType: "text",
     sourcePlatform: "instagram",
-    sourceUrl: "https://www.instagram.com/ellaroli_/p/Deh3u82lniA/",
+    sourceUrl: "https://www.instagram.com/thecrayhub/reel/DZPoJvltB92/",
     featured: true,
-    publishedAt: "2026-10-15",
+    publishedAt: "2026-06-06",
+  },
+  {
+    id: "show-n-tell-june-26",
+    slug: "show-n-tell-june-26",
+    title: "Show n' Tell — June 26",
+    description:
+      "The next edition of The Cray's Show n' Tell — an ongoing series bringing Hamilton's Christian creative community together to showcase their work.",
+    category: "arts-writings",
+    mediaType: "text",
+    sourcePlatform: "instagram",
+    sourceUrl: "https://www.instagram.com/thecrayhub/reel/DZu7FLQtlPB/",
+    featured: true,
+    publishedAt: "2026-06-18",
   },
 
   // --- Content & Storytelling: featured YouTube ---
