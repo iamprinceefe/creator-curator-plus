@@ -1,4 +1,4 @@
-import { BookOpenText, Briefcase, Instagram, Mail, Music2 } from "lucide-react";
+import { BookOpenText, Briefcase, Instagram, Linkedin, Mail, Music2, Youtube } from "lucide-react";
 
 import { SOCIAL_LINKS } from "@/data/social";
 import { cn } from "@/lib/utils";
@@ -9,6 +9,8 @@ const ICONS = {
   substack: BookOpenText,
   contra: Briefcase,
   email: Mail,
+  youtube: Youtube,
+  linkedin: Linkedin,
 } as const;
 
 export function SocialLinks({

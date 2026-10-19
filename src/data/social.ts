@@ -19,6 +19,16 @@ export const SOCIAL_LINKS = {
     handle: "Book a project",
     url: "https://contra.com/roli_amori_qt0rz00i",
   },
+  youtube: {
+    label: "YouTube",
+    handle: "Ella Roli",
+    url: "https://www.youtube.com/@ellaroli",
+  },
+  linkedin: {
+    label: "LinkedIn",
+    handle: "Ella Roli",
+    url: "https://www.linkedin.com/in/ellaroli",
+  },
   email: {
     label: "Email",
     handle: "ellaroli@icloud.com",

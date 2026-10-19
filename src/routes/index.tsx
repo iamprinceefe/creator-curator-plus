@@ -612,7 +612,7 @@ function CreatorPortfolio() {
               </Button>
             </div>
             <div className="mt-8">
-              <SocialLinks include={["instagram", "tiktok", "substack"]} />
+              <SocialLinks include={["instagram", "tiktok", "substack", "youtube", "linkedin"]} />
             </div>
           </div>
         </section>
@@ -638,7 +638,10 @@ function CreatorPortfolio() {
             <a className="min-h-11 content-center hover:text-foreground" href="#about">
               About
             </a>
-            <SocialLinks include={["instagram", "tiktok", "substack"]} className="min-h-11" />
+            <SocialLinks
+              include={["instagram", "tiktok", "substack", "youtube", "linkedin"]}
+              className="min-h-11"
+            />
             <span>© {new Date().getFullYear()} Ella Roli</span>
           </div>
         </div>
